@@ -1,8 +1,8 @@
 /*
 * @Author: Craig Bojko (c14486a)
 * @Date:   2016-12-13 12:32:03
-* @Last Modified by:   Craig Bojko (c14486a)
-* @Last Modified time: 2016-12-13 14:38:24
+* @Last Modified by:   Craig Bojko (Craig Bojko)
+* @Last Modified time: 2016-12-13 16:37:21
 */
 
 /* globals mboxTrack */
@@ -11,6 +11,7 @@ import './styles/main.less'
 import $ from 'jquery'
 import poll from './js/util/poller'
 import html from './templates/main.html'
+import Calculator from './js/calculator'
 
 let ns = process.env.RFC_NAMESPACE
 let env = process.env.NODE_ENV
@@ -35,7 +36,12 @@ console.groupEnd()
  * @return {void} - return not necessary
  */
 function init () {
-  $(html({ns: ns})).appendTo('#main')
-
+  var $html = $(html({ns: ns}))
+  let calculator = new Calculator(1, 2, 3, 4, 5)
+  
+  console.log('REPAYMENT: %s', calculator.repayments)
+  window.debug['calculator'] = calculator
+  let calc = calculator.calculate()
+  $html.append('<p>CALC: ' + calc + '</p>').appendTo('#main')
   $('body').show()
 }
