@@ -2,7 +2,7 @@
 * @Author: Craig Bojko (Craig Bojko)
 * @Date:   2017-01-05 11:54:30
 * @Last Modified by:   Craig Bojko (Craig Bojko)
-* @Last Modified time: 2017-01-05 13:59:07
+* @Last Modified time: 2017-01-05 14:27:11
 */
 
 const MaxLengthOfRepayments = 240 // 20yrs in months
@@ -33,8 +33,8 @@ export default class PaymentGrid {
 
     // starting amount
     this.repaymentArray[0] = {
-      balance: balanceAmount,
-      interest: balanceAmount * this.monthlyApr
+      balance: parseFloat(balanceAmount.toFixed(3), 10),
+        interest: parseFloat((balanceAmount * this.monthlyApr).toFixed(4), 10)
     }
 
     while (i < MaxLengthOfRepayments) {
@@ -42,12 +42,12 @@ export default class PaymentGrid {
       let prevInterest = this.repaymentArray[i - 1].interest
       balanceAmount = prevBalance - this.repaymentAmount + prevInterest
       this.repaymentArray[i] = {
-        balance: balanceAmount,
-        interest: balanceAmount * this.monthlyApr
+        balance: parseFloat(balanceAmount.toFixed(3), 10),
+        interest: parseFloat((balanceAmount * this.monthlyApr).toFixed(4), 10)
       }
       i++
     }
-
+    // @TODO - error checking for 0-240 range for pivot (outside of payment window)
     for (let j = 0; j < this.repaymentArray.length; j++) {
       try {
         let currMonth = this.repaymentArray[j]
@@ -63,6 +63,22 @@ export default class PaymentGrid {
 
   getPivot () {
     return this.pivot
+  }
+
+  getLengthOfRepayment () {
+    return this.pivot + 1
+  }
+
+  getInterestSum () {
+    let i = 0
+    let sumInterest = 0
+    while (i < MaxLengthOfRepayments) {
+      if (this.repaymentArray[i].interest > 0) {
+        sumInterest += this.repaymentArray[i].interest
+      }
+      i++
+    }
+    return sumInterest
   }
 
 }

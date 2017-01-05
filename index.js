@@ -2,7 +2,7 @@
 * @Author: Craig Bojko (c14486a)
 * @Date:   2016-12-13 12:32:03
 * @Last Modified by:   Craig Bojko (Craig Bojko)
-* @Last Modified time: 2017-01-05 13:50:07
+* @Last Modified time: 2017-01-05 15:29:25
 */
 
 /* globals mboxTrack */
@@ -40,9 +40,8 @@ function init () {
   let calculator = window.debug['calculator'] = new Calculator(10000, 220, 18.9, 24, 1.2)
   let calc = calculator.calculate()
 
-  window.debug.repaymentGrids = calc
+  window.debug.calulations = calc
 
-  $html.append('<p>CALC1: ' + calc.a + '</p>').appendTo('#main')
-  $html.append('<p>CALC2: ' + calc.b + '</p>').appendTo('#main')
+  $html.appendTo('#main')
   $('body').show()
 }
