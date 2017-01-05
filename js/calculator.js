@@ -2,8 +2,10 @@
 * @Author: Craig Bojko (Craig Bojko)
 * @Date:   2016-12-13 15:50:53
 * @Last Modified by:   Craig Bojko (Craig Bojko)
-* @Last Modified time: 2016-12-13 16:41:25
+* @Last Modified time: 2017-01-05 13:56:38
 */
+
+import PaymentGrid from './modules/paymentGrid'
 
 let config = new WeakMap()
 
@@ -32,7 +34,15 @@ export default class Calculator {
   get fee () { return config.get(this).fee }
 
   calculate () {
-    return 1234
+    let paymentGrid1 = new PaymentGrid(config.get(this).transferBalance, config.get(this).repayments, config.get(this).apr)
+    let paymentGrid2 = new PaymentGrid(4720, config.get(this).repayments, config.get(this).apr)
+
+    let grid1Pivot = paymentGrid1.getPivot()
+    let grid2Pivot = paymentGrid2.getPivot()
+    return {
+      a: grid1Pivot,
+      b: grid2Pivot
+    }
   }
 
 }
