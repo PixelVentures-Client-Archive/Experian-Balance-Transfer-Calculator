@@ -2,7 +2,7 @@
 * @Author: Craig Bojko (Craig Bojko)
 * @Date:   2017-01-05 11:54:30
 * @Last Modified by:   Craig Bojko (Craig Bojko)
-* @Last Modified time: 2017-01-05 14:27:11
+* @Last Modified time: 2017-01-05 16:47:49
 */
 
 const MaxLengthOfRepayments = 240 // 20yrs in months
@@ -34,7 +34,7 @@ export default class PaymentGrid {
     // starting amount
     this.repaymentArray[0] = {
       balance: parseFloat(balanceAmount.toFixed(3), 10),
-        interest: parseFloat((balanceAmount * this.monthlyApr).toFixed(4), 10)
+      interest: parseFloat((balanceAmount * this.monthlyApr).toFixed(4), 10)
     }
 
     while (i < MaxLengthOfRepayments) {

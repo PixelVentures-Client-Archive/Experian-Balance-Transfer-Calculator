@@ -1,3 +1,91 @@
 <div id='<%=ns%>'>
-  TEST PAGE 2
+  <div class="container">
+    <div class="col-xs-12">
+      <div class="row mb">
+        <h1 class="text-center">Balance Calculator</h1>
+      </div>
+      <div class="row mb">
+        <div class="col-md-6 input input-left">
+          <div class="col-md-12">
+            <h3>Your current card details</h3>
+            <div class="input-align">
+              <div class="input-block col-xs-6 mb">
+                <p>
+                  Outstanding balance
+                  <span class="tooltip tooltip-1">?</span>
+                </p>
+                <label for="input-balanceTransfer" class="label-left">£</label>
+                <input type="text" value="" class="text-input input-balanceTransfer" />
+              </div>
+              <div class="input-block col-xs-3 col-xs-offset-1 mb">
+                <p>
+                  APR
+                  <span class="tooltip tooltip-2">?</span>
+                </p>
+                <input type="text" value="" class="text-input input-apr ir" /></label>
+                <label for="input-apr" class="label-right">%</label>
+              </div>
+              <div class="input-block col-xs-6">
+                <p>
+                  Your monthly repayments
+                  <span class="tooltip tooltip-3">?</span>
+                </p>
+                <label for="input-repayments" class="label-left">£</label>
+                <input type="text" value="" class="text-input input-repayments" /></label>
+              </div>
+              <div class="clear">&nbsp;</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 input input-right">
+          <div class="col-md-12">
+            <h3>New balance transfer card details</h3>
+            <div class="input-align">
+              <div class="input-block col-xs-10 mb">
+                <p>
+                  0% promotional interest rate period
+                  <span class="tooltip tooltip-4">?</span>
+                </p>
+                <select class="select-input input-ratePeriod">
+                  <option value="0">0 months</option>
+                  <option value="6">6 months</option>
+                  <option value="12">12 months</option>
+                  <option value="18">18 months</option>
+                  <option value="24">24 months</option>
+                </select>
+              </div>
+              <div class="input-block col-xs-10 mb">
+                <p>
+                  Balance transfer fee
+                  <span class="tooltip tooltip-5">?</span>
+                </p>
+                <select class="select-input input-transferFee">
+                  <option value="1.4">1.4%</option>
+                  <option value="1.5">1.5%</option>
+                  <option value="1.6">1.6%</option>
+                  <option value="1.7">1.7%</option>
+                  <option value="1.8">1.8%</option>
+                </select>
+              </div>
+              <div class="clear">&nbsp;</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb">
+        <div class="col-xs-4 col-xs-offset-4 text-center">
+          <button type="button" class="btn btn-primary calculate">Calculate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <pre class="object_dump">
+          
+        </pre>
+      </div>
+    </div>
+  </div>
 </div>

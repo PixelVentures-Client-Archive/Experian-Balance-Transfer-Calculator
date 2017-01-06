@@ -2,7 +2,7 @@
 * @Author: Craig Bojko (Craig Bojko)
 * @Date:   2016-12-13 15:50:53
 * @Last Modified by:   Craig Bojko (Craig Bojko)
-* @Last Modified time: 2017-01-05 15:05:47
+* @Last Modified time: 2017-01-06 10:34:13
 */
 
 import PaymentGrid from './modules/paymentGrid'
@@ -42,8 +42,8 @@ export default class Calculator {
     return {
       grid1Pivot: paymentGrid1.getPivot(),
       grid2Pivot: paymentGrid2.getPivot(),
-      paymentGrid1: paymentGrid1,
-      paymentGrid2: paymentGrid2,
+      // paymentGrid1: paymentGrid1,
+      // paymentGrid2: paymentGrid2,
       interestSum1: this.calcInterestInIntroPeriod(),
       interestSum2: this.calcInterestOutIntroPeriod(),
       fee: this.calculateFee(),

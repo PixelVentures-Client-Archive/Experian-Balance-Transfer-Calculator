@@ -1,8 +1,8 @@
 /*
 * @Author: Craig Bojko (c14486a)
 * @Date:   2016-12-13 12:32:03
-* @Last Modified by:   Craig Bojko (c14486a)
-* @Last Modified time: 2016-12-13 15:17:17
+* @Last Modified by:   Craig Bojko (Craig Bojko)
+* @Last Modified time: 2017-01-06 10:02:24
 */
 
 require('colors')
@@ -80,8 +80,8 @@ var wbConfig = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader?presets[]=es2015'
-      }
-      // { test: /\.html$/, loader: 'html' },
+      },
+      { test: /\.json$/, loader: 'json-loader' }
       // { test: /\.css|less$/, loader: 'style-loader!css-loader!postcss-loader!less-loader' },
     ]
   },
