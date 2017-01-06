@@ -10,28 +10,41 @@
             <h3>Your current card details</h3>
             <div class="input-align">
               <div class="input-block col-xs-6 mb">
-                <p>
-                  Outstanding balance
-                  <span class="tooltip tooltip-1">?</span>
-                </p>
-                <label for="input-balanceTransfer" class="label-left">£</label>
-                <input type="text" value="" class="text-input input-balanceTransfer" />
+                <div class="form-group">
+                  <label class="" for="input-balanceTransfer">
+                    Outstanding balance
+                    <span class="tooltip tooltip-1">?</span>
+                  </label>
+                  <div class="input-group">
+                    <div class="input-group-addon">£</div>
+                    <input type="number" max="100000" min="0" step="500" value="1000" id="input-balanceTransfer" name="input-balanceTransfer" class="form-control text-input input-balanceTransfer" />
+                    <div class="input-group-addon">.00</div>
+                  </div>
+                </div>
               </div>
               <div class="input-block col-xs-3 col-xs-offset-1 mb">
-                <p>
-                  APR
-                  <span class="tooltip tooltip-2">?</span>
-                </p>
-                <input type="text" value="" class="text-input input-apr ir" /></label>
-                <label for="input-apr" class="label-right">%</label>
+                <div class="form-group">
+                  <label class="" for="input-apr">
+                    APR
+                    <span class="tooltip tooltip-2">?</span>
+                  </label>
+                  <div class="input-group">
+                    <input type="number" max="39.9" min="0" value="18.9" step="0.1" id="input-apr" name="input-apr" class="form-control text-input input-apr" />
+                    <div class="input-group-addon">%</div>
+                  </div>
+                </div>
               </div>
               <div class="input-block col-xs-6">
-                <p>
-                  Your monthly repayments
-                  <span class="tooltip tooltip-3">?</span>
-                </p>
-                <label for="input-repayments" class="label-left">£</label>
-                <input type="text" value="" class="text-input input-repayments" /></label>
+                <div class="form-group">
+                  <label class="" for="input-repayments">
+                    Your monthly payments
+                    <span class="tooltip tooltip-3">?</span>
+                  </label>
+                  <div class="input-group">
+                    <div class="input-group-addon">£</div>
+                    <input type="number" max="10000" min="5" value="220" step="5" id="input-repayments" name="input-repayments" class="form-control text-input input-repayments" />
+                  </div>
+                </div>
               </div>
               <div class="clear">&nbsp;</div>
             </div>
@@ -41,35 +54,99 @@
           <div class="col-md-12">
             <h3>New balance transfer card details</h3>
             <div class="input-align">
-              <div class="input-block col-xs-10 mb">
-                <p>
-                  0% promotional interest rate period
-                  <span class="tooltip tooltip-4">?</span>
-                </p>
-                <select class="select-input input-ratePeriod">
-                  <option value="0">0 months</option>
-                  <option value="6">6 months</option>
-                  <option value="12">12 months</option>
-                  <option value="18">18 months</option>
-                  <option value="24">24 months</option>
-                </select>
+              <div class="input-block col-xs-8 mb">
+                <div class="form-group">
+                  <label class="" for="input-ratePeriod">
+                    0% promotional interest rate period
+                    <span class="tooltip tooltip-4">?</span>
+                  </label>
+                  <div class="input-group">
+                    <select name="input-ratePeriod" class="form-control select-input input-ratePeriod">
+                      <option value="1">1 month</option>
+                      <option value="2">2 months</option>
+                      <option value="3">3 months</option>
+                      <option value="4">4 months</option>
+                      <option value="5">5 months</option>
+                      <option value="6">6 months</option>
+                      <option value="7">7 months</option>
+                      <option value="8">8 months</option>
+                      <option value="9">9 months</option>
+                      <option value="10">10 months</option>
+                      <option value="11">11 months</option>
+                      <option value="12">12 months</option>
+                      <option value="13">13 months</option>
+                      <option value="14">14 months</option>
+                      <option value="15">15 months</option>
+                      <option value="16">16 months</option>
+                      <option value="17">17 months</option>
+                      <option value="18">18 months</option>
+                      <option value="19">19 months</option>
+                      <option value="20">20 months</option>
+                      <option value="21">21 months</option>
+                      <option value="22">22 months</option>
+                      <option value="23">23 months</option>
+                      <option value="24">24 months</option>
+                      <option value="25">25 months</option>
+                      <option value="26">26 months</option>
+                      <option value="27">27 months</option>
+                      <option value="28">28 months</option>
+                      <option value="29">29 months</option>
+                      <option value="30">30 months</option>
+                      <option value="31">31 months</option>
+                      <option value="32">32 months</option>
+                      <option value="33">33 months</option>
+                      <option value="34">34 months</option>
+                      <option value="35">35 months</option>
+                      <option value="36">36 months</option>
+                      <option value="37">37 months</option>
+                      <option value="38">38 months</option>
+                      <option value="39">39 months</option>
+                      <option value="40">40 months</option>
+                      <option value="41">41 months</option>
+                      <option value="42">42 months</option>
+                      <option value="43">43 months</option>
+                      <option value="44">44 months</option>
+                      <option value="45">45 months</option>
+                      <option value="46">46 months</option>
+                      <option value="47">47 months</option>
+                      <option value="48">48 months</option>
+                      <option value="49">49 months</option>
+                      <option value="50">50 months</option>
+                      <option value="51">51 months</option>
+                      <option value="52">52 months</option>
+                      <option value="53">53 months</option>
+                      <option value="54">54 months</option>
+                      <option value="55">55 months</option>
+                      <option value="56">56 months</option>
+                      <option value="57">57 months</option>
+                      <option value="58">58 months</option>
+                      <option value="59">59 months</option>
+                      <option value="60">60 months</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-              <div class="input-block col-xs-10 mb">
-                <p>
-                  Balance transfer fee
-                  <span class="tooltip tooltip-5">?</span>
-                </p>
-                <select class="select-input input-transferFee">
-                  <option value="1.4">1.4%</option>
-                  <option value="1.5">1.5%</option>
-                  <option value="1.6">1.6%</option>
-                  <option value="1.7">1.7%</option>
-                  <option value="1.8">1.8%</option>
-                </select>
+              <div class="clearfix"></div>
+              <div class="input-block col-xs-6 mb">
+                <div class="form-group">
+                  <label class="" for="input-transferFee">
+                    Balance transfer fee
+                    <span class="tooltip tooltip-5">?</span>
+                  </label>
+                  <div class="input-group">
+                    <input type="number" max="5" min="0" value="1.4" step="0.1" id="input-transferFee" name="input-transferFee" class="form-control text-input input-transferFee" />
+                    <div class="input-group-addon">%</div>
+                  </div>
+                </div>
               </div>
-              <div class="clear">&nbsp;</div>
+              <div class="clearfix"></div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="row gutter mb">
+        <div id="error_display" class="col-xs-12 text-danger bg-danger">
+          
         </div>
       </div>
       <div class="row mb">
@@ -80,7 +157,7 @@
     </div>
   </div>
   <div class="container">
-    <div class="row">
+    <div class="row gutter">
       <div class="col-xs-12">
         <pre class="object_dump">
           
@@ -88,4 +165,5 @@
       </div>
     </div>
   </div>
+  <div class="clearfix"></div>
 </div>

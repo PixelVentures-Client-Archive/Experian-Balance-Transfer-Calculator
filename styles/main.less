@@ -53,10 +53,12 @@ body {
   .container {
     background: #EEE;
 
+    .row.gutter {
+      padding: 0px 10px;
+    }
+
     .input {
       > div {
-        background-clip: padding-box;
-        border: 10px solid transparent;
         background: #CCC;
         border-radius: 3px;
       }
@@ -70,37 +72,23 @@ body {
 
         label {
           position: relative;
-          padding: 5px;
-          background: #666;
-          border-radius: 5px 0 0 5px;
-          box-shadow: 0px 0px 0px 1px #444;
-          color: white;
-          margin-right: -3px;
-
+          padding: 5px 0;
+          
           &.label-right {
-            margin-right: 0px;
-            margin-left: -5px;
-            border-radius: 0 5px 5px 0;
+            
           }
         }
 
         input.text-input {
           padding: 5px;
-          width: 85%;
-          border-radius: 5px;
-          box-shadow: 0px 0px 0px 1px #999;
-          border: none;
-          border-radius: 0 5px 5px 0;
 
           &.ir {
-            width: 65%;
-            border-radius: 5px 0 0 5px;
+
           }
         }
 
         select.select-input {
           padding: 5px 15px;
-          width: 85%;
         }
       }
 
@@ -111,6 +99,12 @@ body {
 
       }
 
+    }
+
+    #error_display {
+      display: none;
+      padding: 10px;
+      text-align: center;
     }
 
     .btn.calculate {
