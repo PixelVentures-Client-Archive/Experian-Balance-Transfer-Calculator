@@ -10,16 +10,16 @@ export function validate (event) {
   try {
     value = parseTo2DP($this.val())
   } catch (e) {
-    console.error('ERROR parsing balanceTransfer input')
+    console.error('ERROR parsing transfer fee input')
     return false
   }
 
-  if (value < 0 || value > 100000) {
-    displayError(1)
+  if (value < 0 || value > 5) {
+    displayError(5)
     $this.parent().removeClass('has-success').addClass('has-error')
     return false
   } else {
-    hideError(1)
+    hideError(5)
     $this.parent().removeClass('has-error').addClass('has-success')
     return true
   }
