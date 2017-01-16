@@ -2,7 +2,7 @@
 * @Author: Craig Bojko (c14486a)
 * @Date:   2016-12-13 12:32:03
 * @Last Modified by:   Craig Bojko (Craig Bojko)
-* @Last Modified time: 2017-01-10 17:21:10
+* @Last Modified time: 2017-01-16 11:31:49
 */
 
 /* globals mboxTrack */
@@ -15,17 +15,22 @@ import Calculator from './js/calculator'
 import Pretty from './js/util/prettyprint'
 import parseTo2DP from './js/util/parseTo2DP'
 
-import { validate as balanceTransferValidation } from './js/modules/validation/balanceTransfer'
-import { validate as aprValidation } from './js/modules/validation/apr'
-import { validate as repaymentsValidation } from './js/modules/validation/repayments'
-import { validate as ratePeriodValidation } from './js/modules/validation/ratePeriod'
-import { validate as transferfeeValidation } from './js/modules/validation/transferfee'
+import BalanceTransferInput from './js/modules/inputs/balanceTransfer'
+import APRInput from './js/modules/inputs/apr'
+import RepaymentsInput from './js/modules/inputs/repayments'
+import RatePeriodInput from './js/modules/inputs/ratePeriod'
+import TransferFeeInput from './js/modules/inputs/transferfee'
 import { displayError } from './js/modules/userErrorHandling'
 
 let ns = process.env.RFC_NAMESPACE
 let env = process.env.NODE_ENV
 
 let calculator
+let balanceTransferInput
+let aprInput
+let repaymentsInput
+let ratePeriodInput
+let transferFeeInput
 
 let domDependancies = [
   '#main'
@@ -54,7 +59,7 @@ function init () {
   let $object = Pretty(calc)
   window.debug.calulations = calc
 
-  bindValidation($html)
+  initialiseInputs($html)
   bindEvents($html)
 
   $html.appendTo('#main')
@@ -62,47 +67,29 @@ function init () {
   $('body').show()
 }
 
-function bindValidation ($html) {
-  // Balance Transfer
-  $html.find('input[name="input-balanceTransfer"]')
-    .on('keyup', balanceTransferValidation)
-    .on('change', balanceTransferValidation)
+function initialiseInputs ($html) {
+  balanceTransferInput = new BalanceTransferInput($html)
+  aprInput = new APRInput($html)
+  repaymentsInput = new RepaymentsInput($html)
+  ratePeriodInput = new RatePeriodInput($html)
+  transferFeeInput = new TransferFeeInput($html)
 
-  $html.find('input[name="input-apr"]')
-    .on('keyup', aprValidation)
-    .on('change', aprValidation)
-
-  $html.find('input[name="input-repayments"]')
-    .on('keyup', repaymentsValidation)
-    .on('change', repaymentsValidation)
-
-  $html.find('select[name="input-ratePeriod"]')
-    .on('keyup', ratePeriodValidation)
-    .on('change', ratePeriodValidation)
-
-  $html.find('input[name="input-transferFee"]')
-    .on('keyup', transferfeeValidation)
-    .on('change', transferfeeValidation)
-
-  $html.find('input[name="input-balanceTransfer"], input[name="input-apr"], input[name="input-repayments"], select[name="input-ratePeriod"], input[name="input-transferFee"]')
-    .on('keyup', checkCalculate)
-    .on('change', checkCalculate)
+  $html.find('input[name="input-balanceTransfer"], input[name="input-apr"], input[name="input-repayments"], select[name="input-ratePeriod"], input[name="input-transferFee"]').on('keyup change', checkCalculate)
 }
 
 function bindEvents ($html) {
   $html.find('.btn.calculate').on('click', (event) => {
     if (allValidate()) {
       // new calculator instance
-      let balance = parseTo2DP($html.find('input[name="input-balanceTransfer"]').val())
-      let apr = parseTo2DP($html.find('input[name="input-apr"]').val())
-      let repayments = parseTo2DP($html.find('input[name="input-repayments"]').val())
-      let ratePeriod = parseTo2DP($html.find('select[name="input-ratePeriod"]').val())
-      let fee = parseTo2DP($html.find('input[name="input-transferFee"]').val())
+      let balance = parseTo2DP(balanceTransferInput.getValue())
+      let apr = parseTo2DP(aprInput.getValue())
+      let repayments = parseTo2DP(repaymentsInput.getValue())
+      let ratePeriod = parseTo2DP(ratePeriodInput.getValue())
+      let fee = parseTo2DP(transferFeeInput.getValue())
 
       calculator = window.debug['calculator'] = new Calculator(balance, repayments, apr, ratePeriod, fee)
-      let calc = calculator.calculate()
+      let calc = window.debug.calulations = calculator.calculate()
       let $object = Pretty(calc)
-      window.debug.calulations = calc
       $html.find('.object_dump').empty().append($object)
     } else {
       displayError(0)
@@ -111,12 +98,12 @@ function bindEvents ($html) {
   })
 }
 
-function allValidate () {
-  if (balanceTransferValidation() &&
-      aprValidation() &&
-      repaymentsValidation() &&
-      ratePeriodValidation() &&
-      transferfeeValidation()
+function allValidate (event) {
+  if (balanceTransferInput.rangeCheck() &&
+      aprInput.rangeCheck() &&
+      repaymentsInput.rangeCheck() &&
+      ratePeriodInput.rangeCheck() &&
+      transferFeeInput.rangeCheck()
     ) {
     return true
   } else {
@@ -124,9 +111,9 @@ function allValidate () {
   }
 }
 
-function checkCalculate ($html) {
+function checkCalculate (event) {
   let $this = $('.btn.calculate')
-  if (allValidate()) {
+  if (allValidate(event) === true) {
     $this.removeAttr('disabled')
     return true
   } else {
