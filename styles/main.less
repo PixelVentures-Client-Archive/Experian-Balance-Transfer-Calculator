@@ -88,7 +88,18 @@ body {
         }
 
         select.select-input {
-          padding: 5px 15px;
+          -webkit-appearance: menulist;
+          -webkit-rtl-ordering: logical;
+          min-width: 230px;
+          padding: .4375em;
+          white-space: pre;
+          border-radius: 4px;
+          cursor: default;
+          align-items: center;
+
+          @media screen and (max-width: 320px) {
+            min-width: 1px;
+          }
         }
       }
 
