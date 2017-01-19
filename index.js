@@ -2,16 +2,18 @@
 * @Author: Craig Bojko (c14486a)
 * @Date:   2016-12-13 12:32:03
 * @Last Modified by:   Craig Bojko (Craig Bojko)
-* @Last Modified time: 2017-01-16 11:31:49
+* @Last Modified time: 2017-01-17 15:56:10
 */
 
 /* globals mboxTrack */
 
 import './styles/main.less'
+
 import $ from 'jquery'
 import poll from './js/util/poller'
 import html from './templates/main.html'
 import Calculator from './js/calculator'
+import Output from './js/output'
 import Pretty from './js/util/prettyprint'
 import parseTo2DP from './js/util/parseTo2DP'
 
@@ -26,6 +28,7 @@ let ns = process.env.RFC_NAMESPACE
 let env = process.env.NODE_ENV
 
 let calculator
+let output
 let balanceTransferInput
 let aprInput
 let repaymentsInput
@@ -80,17 +83,25 @@ function initialiseInputs ($html) {
 function bindEvents ($html) {
   $html.find('.btn.calculate').on('click', (event) => {
     if (allValidate()) {
-      // new calculator instance
+      // remove existing instances
+      // delete calculator
+      // delete output
+
+      // parse input values
       let balance = parseTo2DP(balanceTransferInput.getValue())
       let apr = parseTo2DP(aprInput.getValue())
       let repayments = parseTo2DP(repaymentsInput.getValue())
       let ratePeriod = parseTo2DP(ratePeriodInput.getValue())
       let fee = parseTo2DP(transferFeeInput.getValue())
 
+      // new instances and display to UI
       calculator = window.debug['calculator'] = new Calculator(balance, repayments, apr, ratePeriod, fee)
+      output = window.debug['output'] = new Output($html.find('.output-container-inject'))
       let calc = window.debug.calulations = calculator.calculate()
       let $object = Pretty(calc)
+
       $html.find('.object_dump').empty().append($object)
+      output.displayResults(calc)
     } else {
       displayError(0)
       console.warn('WARNING: Validation not passing')

@@ -64,6 +64,10 @@ body {
       }
 
       .input-block {
+        .input-group {
+          width: 100%;
+        }
+
         p {
           span.tooltip {
             display: none; // @TODO - finalise
@@ -90,8 +94,10 @@ body {
         select.select-input {
           -webkit-appearance: menulist;
           -webkit-rtl-ordering: logical;
-          min-width: 230px;
-          padding: .4375em;
+          box-sizing: content-box;
+          width: 100%;
+          min-width: 100%;
+          padding: 0px 5px;
           white-space: pre;
           border-radius: 4px;
           cursor: default;
@@ -109,7 +115,77 @@ body {
       &.input-right {
 
       }
+    }
 
+    .output {
+      text-align: center;
+      color: #333;
+      
+      > div {
+        border: solid 2px #ccc;
+        border-radius: 10px;
+        padding: 0px;
+      }
+
+      &.output-left {
+
+      }
+      &.output-middle {
+        border: none;
+      }
+      &.output-right {
+        > div {
+          border-color: #B92F7C;
+        }
+        .output-header {
+          border-color: #DFA5C4;
+        }
+        .output-body {
+          margin: 0;
+          padding: 10px 0;
+
+          .output-body-top {
+            padding: 10px 0;
+
+            p:last-child {
+              font-size: 22px;
+              color: #B92F7C;
+            }
+          }
+          .output-body-bottom {
+            p:last-child {
+              font-size: 22px;
+              color: #B92F7C;
+            }
+          }
+        }
+      }
+
+      .output-header {
+        margin: 0;
+        padding: 15px 0;
+        border-bottom: solid 2px #ccc;
+
+        h3 {
+          margin: 0;
+        }
+      }
+      .output-body {
+        margin: 0;
+        padding: 10px 0;
+
+        .output-body-top {
+          padding: 10px 0;
+          p:last-child {
+            font-size: 22px;
+          }
+        }
+        .output-body-bottom {
+          p:last-child {
+            font-size: 22px;
+          }
+        }
+      }
     }
 
     #error_display {

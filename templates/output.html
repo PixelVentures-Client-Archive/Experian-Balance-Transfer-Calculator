@@ -1,0 +1,49 @@
+<div class="container output-container">
+  <div class="row mb">
+    <div class="col-xs-12">
+      <div class="row mb">
+        <h1 class="text-center"><%= outputHeader %></h1>
+      </div>
+      <div class="row mb">
+        <div class="col-xs-12 col-md-5 output output-left">
+          <div class="col-xs-12 col-md-12">
+            <div class="output-header">
+              <h3>Current card repayment</h3>
+            </div>
+            <div class="output-body">
+              <div class="output-body-top">
+                <p>Full repayment within</p>
+                <p><%= fullRepaymentCurrent %></p>
+              </div>
+              <div class="output-body-bottom">
+                <p>Total interest</p>
+                <p><%= totalInterestCurrent %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-hidden col-md-2 output output-middle">
+          &rarr;
+        </div>
+        <div class="col-xs-12 col-md-5 output output-right">
+          <div class="col-xs-12 col-md-12">
+            <div class="output-header">
+              <h3>New Balance card repayment</h3>
+            </div>
+            <div class="output-body">
+              <div class="output-body-top">
+                <p>Full repayment within</p>
+                <p><%= fullRepaymentNew %></p>
+              </div>
+              <div class="output-body-bottom">
+                <p>Total interest and fees</p>
+                <p><%= totalInterestNew %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
